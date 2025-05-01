@@ -1,0 +1,51 @@
+<?php
+/**
+ * MagoArab PhoneMail Module
+ *
+ * @category  MagoArab
+ * @package   MagoArab_PhoneMail
+ * @author    MagoArab
+ * @copyright Copyright (c) 2025
+ */
+
+/** @var \MagoArab\PhoneMail\Block\Adminhtml\System\Config\Field\DomainInfo $block */
+?>
+<div class="domain-info-container">
+    <div class="domain-info-content">
+        <h4><?= $block->escapeHtml(__('Email Domain Information')) ?></h4>
+        <p><?= $block->escapeHtml(__('This domain will be used to generate email addresses from customer phone numbers.')) ?></p>
+        
+        <div class="domain-example">
+            <strong><?= $block->escapeHtml(__('Example:')) ?></strong>
+            <span><?= $block->escapeHtml($block->getExampleEmail()) ?></span>
+        </div>
+        
+        <div class="domain-note">
+            <strong><?= $block->escapeHtml(__('Note:')) ?></strong>
+            <span><?= $block->escapeHtml(__('Make sure the domain you choose can receive emails to avoid delivery issues.')) ?></span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .domain-info-container {
+        padding: 10px;
+        background: #f8f8f8;
+        border: 1px solid #e3e3e3;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+    .domain-info-content {
+        padding: 5px;
+    }
+    .domain-example {
+        margin: 10px 0;
+        font-size: 14px;
+    }
+    .domain-note {
+        color: #6f6f6f;
+        font-size: 12px;
+        font-style: italic;
+        margin-top: 10px;
+    }
+</style>

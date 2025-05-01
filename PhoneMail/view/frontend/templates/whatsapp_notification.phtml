@@ -1,0 +1,52 @@
+<?php
+/**
+ * MagoArab PhoneMail Module
+ *
+ * @category  MagoArab
+ * @package   MagoArab_PhoneMail
+ * @author    MagoArab
+ * @copyright Copyright (c) 2025
+ */
+
+/** @var \MagoArab\PhoneMail\Block\WhatsApp\Notification $block */
+?>
+
+<?php if ($block->isWhatsAppEnabled()): ?>
+<div class="whatsapp-notification-block">
+    <div class="whatsapp-notification-container">
+        <div class="whatsapp-icon">
+            <img src="<?= $block->getViewFileUrl('MagoArab_PhoneMail::images/whatsapp-icon.png') ?>"
+                 alt="<?= $block->escapeHtmlAttr(__('WhatsApp Notifications')) ?>"
+                 width="24"
+                 height="24" />
+        </div>
+        <div class="whatsapp-text">
+            <span><?= $block->escapeHtml(__('Order updates will be sent to your phone via WhatsApp.')) ?></span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .whatsapp-notification-block {
+        margin: 15px 0;
+        padding: 10px;
+        background-color: #f0f8f0;
+        border-radius: 5px;
+        border-left: 3px solid #25d366;
+    }
+    
+    .whatsapp-notification-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .whatsapp-icon {
+        margin-right: 10px;
+    }
+    
+    .whatsapp-text {
+        font-size: 14px;
+        color: #333;
+    }
+</style>
+<?php endif; ?>

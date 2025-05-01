@@ -1,0 +1,36 @@
+<?php
+/**
+ * MagoArab PhoneMail Module
+ *
+ * @category  MagoArab
+ * @package   MagoArab_PhoneMail
+ * @author    MagoArab
+ * @copyright Copyright (c) 2025
+ */
+
+/** @var \MagoArab\PhoneMail\Block\Customer\PhoneEmail $block */
+?>
+
+<div class="phonemail-container" data-mage-init='{"phonemailWidget": {}}'>
+    <?php if ($block->isModuleEnabled()): ?>
+        <div class="phonemail-info">
+            <div class="phone-field-note">
+                <p><?= $block->escapeHtml(__('Your email address will be generated automatically from your phone number.')) ?></p>
+                <div class="example">
+                    <small>
+                        <?= $block->escapeHtml(__('Example: If your phone number is 1234567890, your email will be %1', $block->getExampleEmail('1234567890'))) ?>
+                    </small>
+                </div>
+            </div>
+        </div>
+        
+        <?php // Include the phone validation JS for use on this page ?>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "MagoArab_PhoneMail/js/phone_email": {}
+            }
+        }
+        </script>
+    <?php endif; ?>
+</div>

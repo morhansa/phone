@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <action name="customer/account/login">
+        <section name="phonemail-config"/>
+    </action>
+    <action name="customer/account/createpost">
+        <section name="phonemail-config"/>
+    </action>
+    <action name="customer/account/logout">
+        <section name="phonemail-config"/>
+    </action>
+    <action name="checkout/cart/add">
+        <section name="phonemail-config"/>
+    </action>
+    <action name="checkout/cart/delete">
+        <section name="phonemail-config"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/selected-payment-method">
+        <section name="phonemail-config"/>
+    </action>
+    <action name="rest/*/V1/carts/*/selected-payment-method">
+        <section name="phonemail-config"/>
+    </action>
+</config>

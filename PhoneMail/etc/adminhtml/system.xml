@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magoarab" translate="label" sortOrder="100">
+            <label>MAGOARAB</label>
+        </tab>
+        
+        <section id="phonemail" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>PhoneMail Settings</label>
+            <tab>magoarab</tab>
+            <resource>MagoArab_PhoneMail::config</resource>
+            
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable PhoneMail</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                
+                <field id="email_domain" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Domain</label>
+                    <comment>Domain used for generating email addresses from phone numbers (e.g. test.ghoste.com)</comment>
+                </field>
+                
+                <field id="phone_validation" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Phone Validation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable phone number validation</comment>
+                </field>
+                
+                <field id="phone_length" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Phone Number Length</label>
+                    <validate>validate-digits</validate>
+                    <comment>Specify the required length of phone numbers (e.g. 11 for Egyptian numbers)</comment>
+                    <depends>
+                        <field id="phone_validation">1</field>
+                    </depends>
+                </field>
+                
+                <field id="phone_min_length" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Phone Length</label>
+                    <validate>validate-digits</validate>
+                    <comment>Specify the minimum length of phone numbers</comment>
+                    <depends>
+                        <field id="phone_validation">1</field>
+                    </depends>
+                </field>
+                
+                <field id="phone_max_length" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Phone Length</label>
+                    <validate>validate-digits</validate>
+                    <comment>Specify the maximum length of phone numbers</comment>
+                    <depends>
+                        <field id="phone_validation">1</field>
+                    </depends>
+                </field>
+            </group>
+            
+            <group id="display" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Display Settings</label>
+                
+                <field id="show_phone_account" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Phone in Account</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Display phone number in customer account information</comment>
+                </field>
+                
+                <field id="autofill_checkout" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto-fill Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Automatically fill phone number in checkout</comment>
+                </field>
+            </group>
+            
+            <group id="whatsapp" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>WhatsApp Settings</label>
+                
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable WhatsApp Notifications</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                
+                <field id="api_key" translate="label" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>WhatsApp API Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment>API Key for WhatsApp integration</comment>
+                </field>
+                
+                <field id="instance_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>WhatsApp Instance ID</label>
+                    <comment>Instance ID for WhatsApp integration</comment>
+                </field>
+                
+                <field id="send_order_confirmation" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Order Confirmation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Send WhatsApp message when order is placed</comment>
+                </field>
+                
+                <field id="send_shipping_update" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Shipping Updates</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Send WhatsApp message when shipping status changes</comment>
+                </field>
+                
+                <field id="order_template" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Confirmation Template</label>
+                    <comment>Template for order confirmation messages. Use {order_id}, {customer_name}, {total} as placeholders.</comment>
+                </field>
+                
+                <field id="shipping_template" translate="label" type="textarea" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping Update Template</label>
+                    <comment>Template for shipping update messages. Use {order_id}, {customer_name}, {tracking_number} as placeholders.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

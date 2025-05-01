@@ -1,0 +1,71 @@
+<?php
+/**
+ * PhoneMail Module
+ *
+ * @category  PhoneMail
+ * @package   PhoneMail\view\frontend\templates\form
+ * @author    MagoArab
+ * @copyright Copyright (c) 2025
+ */
+?>
+<script type="text/javascript">
+require([
+    'jquery',
+    'mage/validation'
+], function($) {
+    'use strict';
+    
+    $(document).ready(function() {
+        // Add validation for telephone field
+        $('#telephone').attr('data-validate', '{"required":true, "validate-phone-exists":true}');
+        
+        // Move telephone field to top
+        var telephoneField = $('.field.telephone');
+        var fieldset = telephoneField.closest('fieldset');
+        
+        if (telephoneField.length && fieldset.length) {
+            // Move to top of fieldset
+            telephoneField.prependTo(fieldset);
+            
+            // Add styling
+            telephoneField.addClass('phonemail-field-primary');
+        }
+    });
+});
+</script>
+<?php
+/**
+ * PhoneMail Module - Register validation
+ *
+ * @category  MagoArab
+ * @package   MagoArab_PhoneMail
+ * @author    MagoArab
+ * @copyright Copyright (c) 2025
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+// Get configuration values from store config
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$scopeConfig = $objectManager->get(\Magento\Framework\App\Config\ScopeConfigInterface::class);
+
+// Get min and max length from config or use defaults
+$minLength = (int)$scopeConfig->getValue('phonemail/phone_validation/min_length', 
+    \Magento\Store\Model\ScopeInterface::SCOPE_STORE) ?: 6;
+$maxLength = (int)$scopeConfig->getValue('phonemail/phone_validation/max_length', 
+    \Magento\Store\Model\ScopeInterface::SCOPE_STORE) ?: 15;
+
+// Create validation config
+$validationConfig = [
+    'minLength' => $minLength,
+    'maxLength' => $maxLength
+];
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "MagoArab_PhoneMail/js/phone-validator": <?= json_encode($validationConfig) ?>
+    }
+}
+</script>
