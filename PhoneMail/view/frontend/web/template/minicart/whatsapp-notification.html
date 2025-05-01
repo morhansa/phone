@@ -1,0 +1,44 @@
+<!--
+/**
+ * MagoArab PhoneMail Module
+ *
+ * @category  MagoArab
+ * @package   MagoArab_PhoneMail
+ * @author    MagoArab
+ * @copyright Copyright (c) 2025
+ */
+-->
+<!-- ko if: whatsappEnabled -->
+<div class="minicart-whatsapp-notification">
+    <div class="whatsapp-icon">
+        <img data-bind="attr: { src: require.toUrl('MagoArab_PhoneMail/images/whatsapp-icon.png') }" 
+             alt="WhatsApp Notifications" 
+             width="16" 
+             height="16" />
+    </div>
+    <div class="whatsapp-text">
+        <span data-bind="i18n: 'Order updates via WhatsApp'"></span>
+    </div>
+</div>
+<!-- /ko -->
+
+<style>
+    .minicart-whatsapp-notification {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #25d366;
+        padding: 5px 10px;
+        background-color: #f0f8f0;
+        margin-top: 5px;
+        border-radius: 3px;
+    }
+    
+    .minicart-whatsapp-notification .whatsapp-icon {
+        margin-right: 5px;
+    }
+    
+    .minicart-whatsapp-notification .whatsapp-text {
+        font-size: 11px;
+    }
+</style>

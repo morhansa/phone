@@ -1,0 +1,141 @@
+/**
+ * MagoArab PhoneMail Module
+ *
+ * @category  MagoArab
+ * @package   MagoArab_PhoneMail
+ * @author    MagoArab
+ * @copyright Copyright (c) 2025
+ */
+
+/* Phone Field Styling */
+.field.telephone {
+    position: relative;
+}
+
+.field.telephone .note {
+    font-size: 12px;
+    color: #6d6d6d;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.field.telephone .control {
+    position: relative;
+}
+
+.field.telephone .control::before {
+    content: "\e0cd"; /* Phone icon from Material Icons */
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #757575;
+    font-size: 18px;
+    z-index: 1;
+}
+
+.field.telephone input[type="tel"] {
+    padding-left: 35px;
+}
+
+/* Enhanced validation error styling */
+.field.telephone.required .mage-error {
+    border-color: #ed8380;
+    background-color: #ffeeee;
+}
+
+/* Highlighted telephone field to emphasize importance */
+.field.telephone.required .control input[type="tel"] {
+    border-width: 1px;
+    transition: all 0.3s ease;
+}
+
+.field.telephone.required .control input[type="tel"]:focus {
+    border-color: #006bb4;
+    box-shadow: 0 0 5px rgba(0, 107, 180, 0.3);
+}
+
+/* Hide email field through CSS as well (backup to JS hiding) */
+.field.email.required {
+    display: none !important;
+}
+
+/* Checkout form specific styles */
+.checkout-index-index .field.telephone {
+    margin-bottom: 20px;
+}
+
+.checkout-index-index .field.telephone .note {
+    font-size: 11px;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 767px) {
+    .field.telephone .control::before {
+        font-size: 16px;
+    }
+    
+    .field.telephone input[type="tel"] {
+        padding-left: 30px;
+    }
+}
+/* Hide note from all phone fields except the primary one */
+.field.telephone:not(.phonemail-primary-phone) .note {
+    display: none !important;
+}
+
+/* Ensure our primary phone field note is visible */
+.field.telephone.phonemail-primary-phone .phonemail-note {
+    display: block !important;
+    color: #6d6d6d;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 5px;
+}/* Styling for the phone note */
+.phonemail-note {
+    display: block;
+    color: #6d6d6d;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Hide all billing email fields */
+.billing-address-form .field.email {
+    display: none !important;
+}
+/* Hide email fields in checkout */
+.shipping-address-form .field.email,
+.form-shipping-address .field.email {
+    display: none !important;
+}
+
+/* Style for phone note */
+.phonemail-note {
+    color: #999;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Make sure validation errors are visible */
+.mage-error {
+    color: #e02b27;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Ensure telephone field is prominent */
+.field.telephone input {
+    border-color: #999 !important;
+}
+
+.field.telephone.required input {
+    border-color: #006bb4 !important;
+}
+
+/* Special styling for phone with validation error */
+.field.telephone input.mage-error {
+    border-color: #e02b27 !important;
+}

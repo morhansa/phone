@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- Observer for order placement to send WhatsApp notification -->
+    <event name="sales_order_place_after">
+        <observer name="magoarab_phonemail_send_whatsapp_notification" instance="MagoArab\PhoneMail\Model\Observer\SendWhatsAppNotification" />
+    </event>
+    
+    <!-- Observer for customer registration to generate email -->
+    <event name="customer_register_success">
+        <observer name="magoarab_phonemail_generate_email" instance="MagoArab\PhoneMail\Model\Observer\GenerateEmail" />
+    </event>
+    
+    <!-- Observer for shipping update to send WhatsApp notification -->
+    <event name="sales_order_shipment_save_after">
+        <observer name="magoarab_phonemail_send_whatsapp_shipping_notification" instance="MagoArab\PhoneMail\Model\Observer\SendWhatsAppShippingNotification" />
+    </event>
+</config>

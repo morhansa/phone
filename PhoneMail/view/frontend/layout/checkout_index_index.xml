@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MagoArab_PhoneMail::css/phone_email.css"/>
+    </head>
+    <body>
+        <!-- إبقاء المحتوى الأصلي للنموذج -->
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="shippingAddress" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="customer-email" xsi:type="array">
+                                                            <item name="component" xsi:type="string">MagoArab_PhoneMail/js/view/checkout/email-hidden</item>
+                                                            <item name="displayArea" xsi:type="string">customer-email</item>
+                                                            <item name="tooltip" xsi:type="array">
+                                                                <item name="description" xsi:type="string" translate="true">We'll generate your email from your phone number</item>
+                                                            </item>
+                                                            <item name="template" xsi:type="string">MagoArab_PhoneMail/checkout/email-hidden</item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        
+        <!-- إضافة أنماط مخصصة وإصلاحات -->
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="phonemail.checkout.styles" template="MagoArab_PhoneMail::checkout/styles.phtml" />
+        </referenceContainer>
+        
+        <!-- إضافة JavaScript للتعامل مع الأخطاء في الصفحة -->
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="phonemail.checkout.js.fixes" template="MagoArab_PhoneMail::checkout/js_fixes.phtml" />
+        </referenceContainer>
+    </body>
+</page>
